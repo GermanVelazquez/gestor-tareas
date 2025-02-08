@@ -1,0 +1,27 @@
+{
+    "id": "number",
+    "nombre": "string",
+    "descripcion": "string",
+    "estado": {
+        "pendiente": "boolean",
+        "completado": "boolean",
+        "cancelado": "boolean"
+    },
+    "fecha_creacion": {
+        "dia": "number",
+        "mes": "number",
+        "año": "number"
+    },
+    "fecha_limite": {
+        "dia": "number",
+        "mes": "number",
+        "año": "number"
+    },
+    "tareas_relacionadas": [
+        {
+            "id": "number",
+            "nombre": "string"
+        }
+    ],
+    "meta_padre": "number | null"
+}

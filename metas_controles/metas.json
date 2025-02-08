@@ -1,0 +1,28 @@
+{
+   "id": "number",
+   "nombre": "string",
+   "descripcion": "string",
+   "fecha_creacion": {
+       "dia": "number",
+       "mes": "number",
+       "año": "number"
+   },
+   "fecha_limite": {
+       "dia": "number",
+       "mes": "number",
+       "año": "number"
+   },
+   "tareas": [
+       {
+           "id": "number",
+           "nombre": "string"
+       }
+   ],
+   "metas_relacionadas": [
+       {
+           "id": "number",
+           "nombre": "string"
+       }
+   ],
+   "meta_padre": "number | null"
+}
