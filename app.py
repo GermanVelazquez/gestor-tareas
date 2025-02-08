@@ -1,7 +1,7 @@
 # app.py
 from flask import Flask
 from extensions import db  # Importa la instancia db definida en extensions.py
-from routes.routes import tarea_blueprint,metas_blueprint # Importa los Blueprints definidos en routes.py
+from rutas.rutas import tarea_blueprint,metas_blueprint # Importa los Blueprints definidos en routes.py
 
 app = Flask(__name__)
 
