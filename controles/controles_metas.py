@@ -1,6 +1,9 @@
 from flask import jsonify, request
+
 from extensions import db
-from models import Meta, Tarea
+from models.models_metas import Meta
+from models.models_tareas import Tarea
+
 
 def add_meta():
     data = request.get_json() or {}

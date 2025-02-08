@@ -1,6 +1,8 @@
 from flask import jsonify, request
+
 from extensions import db
-from models import Tarea
+from models.models_tareas import Tarea
+
 
 def add_tarea():
     data = request.get_json() or {}

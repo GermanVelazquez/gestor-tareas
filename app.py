@@ -1,19 +1,26 @@
 # app.py
+import os
+
+from dotenv import load_dotenv
 from flask import Flask
+
+from config import Config
 from extensions import db  # Importa la instancia db definida en extensions.py
-from rutas.rutas import tarea_blueprint,metas_blueprint # Importa los Blueprints definidos en routes.py
+from routes.meta import metas_blueprint
+from routes.tarea import tareas_blueprint
 
 app = Flask(__name__)
 
-# Configuración de la base de datos
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:@localhost:3306/flask_db"
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-db.init_app(app)  # Inicializa SQLAlchemy con la aplicación
+# Cargar las variables de entorno desde el archivo .env
+load_dotenv()
 
-# Registrar los Blueprints para agrupar las rutas
-app.register_blueprint(tarea_blueprint, url_prefix="/tareas")
+
+
+# Configuración de la base de datos
+app.config.from_object('config.Config')  # Cargar desde el archivo config.py
+db.init_app(app)
+
+# Registrar los Blueprints
+app.register_blueprint(tareas_blueprint, url_prefix="/tareas")
 app.register_blueprint(metas_blueprint, url_prefix="/metas")
 
-# Crear todas las tablas en la base de datos si no existen
-with app.app_context():
-    db.create_all()
