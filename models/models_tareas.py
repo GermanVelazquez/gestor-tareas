@@ -1,7 +1,9 @@
+#models/models_tareas.py
 from extensions import db  # Importa la instancia db
 
 
 class Tarea(db.Model):
+    __tablename__ = 'tarea'
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(100), nullable=False)
     descripcion = db.Column(db.Text, nullable=True)
