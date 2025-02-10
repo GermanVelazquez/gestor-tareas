@@ -1,8 +1,11 @@
+#models/models_metas.py
 from extensions import db  # Importa la instancia db
 from models.models_tareas import Tarea
+from models.models_user import User
 
 
 class Meta(db.Model):
+    __tablename__ = 'meta'
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(100), nullable=False)
     descripcion = db.Column(db.Text, nullable=True)
@@ -13,6 +16,9 @@ class Meta(db.Model):
     fecha_limite = db.Column(db.String(10))
     meta_padre = db.Column(db.Integer, db.ForeignKey("meta.id"), nullable=True)
     
+    # Relación con Usuario (muchas metas → 1 usuario)
+    usuario_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+
     # Relación many-to-many entre Meta y Tarea
     tareas = db.relationship("Tarea", secondary="meta_tarea", backref="metas")
 

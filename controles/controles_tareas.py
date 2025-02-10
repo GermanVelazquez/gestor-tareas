@@ -1,7 +1,10 @@
+#controles/controles_tareas.py
 from flask import jsonify, request
+
 
 from extensions import db
 from models.models_tareas import Tarea
+
 
 
 def add_tarea():
@@ -26,12 +29,11 @@ def add_tarea():
     )
 
     db.session.add(nueva_tarea)
-    db.session.flush()  # 🚀 Forzar a SQLAlchemy a asignar el ID antes del commit
+    db.session.flush()  #  Forzar a SQLAlchemy a asignar el ID antes del commit
     print(f"ID asignado después de flush: {nueva_tarea.id}")  # Verifica el ID
     db.session.commit()
 
     return jsonify(nueva_tarea.to_dict()), 201
-
 
 def update_tarea(id):
     data = request.get_json() or {}
@@ -54,11 +56,15 @@ def update_tarea(id):
 
     return jsonify({"message": "Tarea no encontrada"}), 404
 
+
+
 def get_tarea(id):
     tarea = Tarea.query.get(id)
     if tarea:
         return jsonify(tarea.to_dict()), 200
     return jsonify({"message": "Tarea no encontrada"}), 404
+
+
 
 def search_tarea():
     nombre = request.args.get("nombre", "")
@@ -76,7 +82,9 @@ def search_tarea():
         return jsonify([t.to_dict() for t in resultados]), 200
     else:
         return jsonify({"message": "No se encontraron tareas con esos criterios"}), 404
-    
+  
+  
+ 
 def delete_tarea(id):
     tarea = Tarea.query.get(id)
     if tarea:
