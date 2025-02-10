@@ -1,7 +1,8 @@
+#routes/tarea.py
 from flask import Blueprint
 
-from controles.controles_tareas import (add_tarea, get_tarea, search_tarea,
-                                        update_tarea, delete_tarea)
+from Controles.controles_tareas import (add_tarea, delete_tarea, get_tarea,
+                                        search_tarea, update_tarea)
 
 tareas_blueprint = Blueprint('tarea', __name__)
 
