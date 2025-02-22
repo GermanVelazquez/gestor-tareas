@@ -47,7 +47,7 @@ def login():
 
 def register():
     data = request.get_json() or {}
-    
+    print(data)
     # Validar los datos usando Marshmallow
     user_schema = UserSchema()
     try:

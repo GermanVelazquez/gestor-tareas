@@ -1,7 +1,7 @@
 #routes/meta.py
 from flask import Blueprint
 
-from Controles.controles_metas import (add_meta, add_tarea_to_meta,
+from controles.controles_metas import (add_meta, add_tarea_to_meta,
                                        delete_meta, get_meta, update_meta)
 
 metas_blueprint = Blueprint('metas', __name__)

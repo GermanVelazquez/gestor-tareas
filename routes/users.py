@@ -2,7 +2,7 @@
 
 from flask import Blueprint
 
-from Controles.controles_users import (login, logout, obtener_metas_usuario,
+from controles.controles_users import (login, logout, obtener_metas_usuario,
                                        perfil, register)
 
 # Crear el Blueprint para usuarios

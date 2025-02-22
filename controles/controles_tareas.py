@@ -1,13 +1,14 @@
 #controles/controles_tareas.py
 from flask import jsonify, request
 
-
 from extensions import db
 from models.models_tareas import Tarea
+from flask_jwt_extended import get_jwt_identity, jwt_required
 
-
-
+@jwt_required()
 def add_tarea():
+    usuario_id=get_jwt_identity()
+    print(usuario_id) 
     data = request.get_json() or {}
 
     nueva_tarea = Tarea(
